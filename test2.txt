@@ -1,0 +1,10 @@
+12:59 true
+23:41 true
+00:12 true
+00:00 true
+09:15 true
+24.00 false
+25.00 false
+12.60 false
+12.93 false
+41.93 false
