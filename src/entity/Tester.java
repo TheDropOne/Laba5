@@ -26,6 +26,7 @@ public class Tester {
                 throw new TestNotPassedException("\t SimpleTest " + test + " not passed!");
             }
         }
+        reportPrinter.addLine("All tests passed!");
         reportPrinter.printReport();
     }
 
