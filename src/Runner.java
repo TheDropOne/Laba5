@@ -19,7 +19,6 @@ public class Runner {
     private static final String EIGHTH_REGEX = "";
     private static final String NINTH_REGEX = "";
 
-    Pattern p = Pattern.compile(SECOND_REGEX);
 
     public static void main(String[] args) {
         try {
