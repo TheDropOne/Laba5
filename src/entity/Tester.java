@@ -24,6 +24,7 @@ public class Tester {
             reportPrinter.addLine(test.getExpression() + "\t\t" + isMatches);
             if (isMatches != test.isCorrect()) {
                 reportPrinter.addLine(test.getExpression() + "\t\t" + "test faled!");
+                reportPrinter.printReport();
                 throw new TestNotPassedException("\t SimpleTest " + test + " not passed!");
             }
         }
@@ -53,6 +54,7 @@ public class Tester {
                         reportPrinter.addLine(test.getExpression() + "\t\t" + "Test passed successfully");
                     } else {
                         reportPrinter.addLine(test.getExpression() + "\t\t" + "Test faled!");
+                        reportPrinter.printReport();
                         throw new TestNotPassedException("\t SimpleTest " + test + " not passed!");
                     }
                     break;

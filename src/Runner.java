@@ -12,11 +12,13 @@ public class Runner {
     private static final String FIRST_REGEX = "\\*[^\\*]+\\*"; //All Tests Passed!
     private static final String SECOND_REGEX = "([01]?\\d|2[0-3]):[0-5]\\d"; // All Tests Passed!
     private static final String THIRD_REGEX = "[a-fA-F0-9]{8}-([a-fA-F0-9]{4}-){3}[a-fA-F0-9]{12}"; // works without brackets
-    private static final String FOURTH_REGEX = "(([01]?\\d{2}|2[0-4]\\d|25[0-5])\\.?){3}([01]?\\d{2}|2[0-4]\\d|25[0-5])"; // Works only for DEC
-    private static final String FIFTH_REGEX = "";
+    private static final String FOURTH_REGEX = "((([01]?\\d{2}|2[0-4]\\d|25[0-5])\\.?){3}([01]?\\d{2}|2[0-4]\\d|25[0-5]))" +
+            "|((([01]?\\d{2}|2[0-4]\\d|25[0-6])\\.?){3}([01]?\\d{2}|2[0-4]\\d|25[0-6]))" +
+            "|((0?(\\d{1,3}|x[a-fA-F0-9]{2})\\.){3}0?(\\d{1,3}|x[a-fA-F0-9]{1,2}))"; // All Tests Passed!
+    private static final String FIFTH_REGEX = "(https?:\\\\)?(w{3}\\.)?";
     private static final String SIXTH_REGEX = "(0[1-9]|[12]\\d|3[01])/(0[1-9]|1[0-2])/(1[6-9]\\d{2}|[2-9]\\d{3})"; // All Tests Passed!
     private static final String SEVENTH_REGEX = "#[a-fA-F0-9]{6}"; // All Tests Passed!
-    private static final String EIGHTH_REGEX = "";
+    private static final String EIGHTH_REGEX = "([^\\s";
     private static final String NINTH_REGEX = "";
 
 
@@ -24,14 +26,16 @@ public class Runner {
         try {
             TestLists.uploadTests();
             //Pattern p1 = Pattern.compile("\\*[^\\*]+\\*");
-            Pattern p3 = Pattern.compile("(([a-fA-F0-9]{8}-([a-fA-F0-9]{4}-){3}[a-fA-F0-9]{12})|\\{\\2\\})");
+            //Pattern p3 = Pattern.compile("(([a-fA-F0-9]{8}-([a-fA-F0-9]{4}-){3}[a-fA-F0-9]{12})|\\{\\2\\})");
             //Pattern p3 = Pattern.compile("([a-fA-F0-9]){8}-\\1");
-            //Pattern p4 = Pattern.compile("(([01]?\\d{2}|2[0-4]\\d|25[0-5])\\.?){3}([01]?\\d{2}|2[0-4]\\d|25[0-5])");
+            Pattern p4 = Pattern.compile("((([01]?\\d{2}|2[0-4]\\d|25[0-5])\\.?){3}([01]?\\d{2}|2[0-4]\\d|25[0-5]))" +
+                    "|((([01]?\\d{2}|2[0-4]\\d|25[0-6])\\.?){3}([01]?\\d{2}|2[0-4]\\d|25[0-6]))" +
+                    "|((0?(\\d{1,3}|x[a-fA-F0-9]{2})\\.){3}0?(\\d{1,3}|x[a-fA-F0-9]{1,2}))");
             //Pattern p6 = Pattern.compile("(0[1-9]|[12]\\d|3[01])/(0[1-9]|1[0-2])/(1[6-9]\\d{2}|[2-9]\\d{3})");
             //Pattern p7 = Pattern.compile("#[a-fA-F0-9]{6}");
-            Tester.makeComplexTest(TestLists.tests_first_task,FIRST_REGEX,1);
+            Tester.makeSimpleTest(TestLists.tests_fourth_task, FOURTH_REGEX);
             System.exit(0);
-
+            Tester.makeComplexTest(TestLists.tests_first_task, FIRST_REGEX, 1);
             Tester.makeSimpleTest(TestLists.tests_second_task, SECOND_REGEX);
             Tester.makeSimpleTest(TestLists.tests_third_task, THIRD_REGEX);
             Tester.makeSimpleTest(TestLists.tests_fourth_task, FOURTH_REGEX);
