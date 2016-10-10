@@ -25,6 +25,11 @@ public class Tester {
             if (isMatches != test.isCorrect()) {
                 reportPrinter.addLine(test.getExpression() + "\t\t" + "test faled!");
                 reportPrinter.printReport();
+                /*try {
+                    new Thread().wait(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }*/
                 throw new TestNotPassedException("\t SimpleTest " + test + " not passed!");
             }
         }
@@ -53,7 +58,7 @@ public class Tester {
                     if (isMatches) {
                         reportPrinter.addLine(test.getExpression() + "\t\t" + "Test passed successfully");
                     } else {
-                        reportPrinter.addLine(test.getExpression() + "\t\t" + "Test faled!");
+                        reportPrinter.addLine(test.getExpression() + "\t\t" + "Test failed!");
                         reportPrinter.printReport();
                         throw new TestNotPassedException("\t SimpleTest " + test + " not passed!");
                     }
