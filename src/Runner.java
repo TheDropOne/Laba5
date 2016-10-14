@@ -20,7 +20,11 @@ public class Runner {
     private static final String SIXTH_REGEX = "(0[1-9]|[12]\\d|3[01])/(0[1-9]|1[0-2])/(1[6-9]\\d{2}|[2-9]\\d{3})"; // All Tests Passed!
     private static final String SEVENTH_REGEX = "#[a-fA-F0-9]{6}"; // All Tests Passed!
     private static final String EIGHTH_REGEX = "(([\\w']+\\s)|(\".+\")|(\\S+(--)|(--)\\S+)|([\\w]+'?[\\w]+-\\w+'?\\w+))"; // All Tests Passed
-    private static final String NINTH_REGEX = "";
+    private static final String NINTH_REGEX = "(\\:([a-zA_Z][a-zA-Z\\+\\-]{0,61}[a-zA_Z]\\.)+([a-z]{2,4})\\s+)?" + //hostname (optional)
+            "[^\\s\\*\"/\\?\\<>\\:\\\\]+" +     //nickname (Required)
+            "\\s+PRIVMSG\\s+" +         //PRIVMSG command (Required)
+            "\\#\\p{Lower}{2,}\\s+" +   //channel (Required)
+            "\\:.{1,450}";               // message (Required)
 
 
     //Will be deleted after testing
@@ -58,16 +62,19 @@ Too long; didn't read => Too,long,didn't,read.
 [_]!abc@test PRIVMSG #chat :Test
 c.m!callum@lynx.io PRIVMSG #chat :Hello!
 */
-        Pattern p9 = Pattern.compile("((\\w+\\s)|(\".+\")|(\\S+(--)|(--)\\S+))");
+        Pattern p9 = Pattern.compile("(\\:([a-zA_Z][a-zA-Z\\+\\-]{0,61}[a-zA_Z]\\.)+([a-z]{2,4})\\s+)?" + //hostname (optional)
+                "[^\\s\\*\"/\\?\\<>\\:\\\\]+" +     //nickname (Required)
+                "\\s+PRIVMSG\\s+" +         //PRIVMSG command (Required)
+                "\\#\\p{Lower}{2,}\\s+" +   //channel (Required)
+                "\\:.{1,450}");               // message (Required)
     }
 
     public static void main(String[] args) {
         try {
             TestLists.uploadTests();
 
-            Tester.makeComplexTest(TestLists.tests_eighth_task,EIGHTH_REGEX,8);
+            Tester.makeComplexTest(TestLists.tests_eighth_task, EIGHTH_REGEX, 8);
             System.exit(0);
-
 
             Tester.makeComplexTest(TestLists.tests_first_task, FIRST_REGEX, 1);
             Tester.makeSimpleTest(TestLists.tests_second_task, SECOND_REGEX);
