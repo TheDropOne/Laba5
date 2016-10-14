@@ -5,6 +5,7 @@ import iostream.ReportPrinter;
 import tests.ComplexTest;
 import tests.SimpleTest;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -21,7 +22,7 @@ public class Tester {
         for (SimpleTest test : testList) {
             matcher = pattern.matcher(test.getExpression());
             isMatches = matcher.matches();
-            reportPrinter.addLine(test.getExpression() + "\t\t" + isMatches);
+            reportPrinter.addLine(test.getExpression() + "\t\t" + isMatches + "\t\t" + "Test passed successfully");
             if (isMatches != test.isCorrect()) {
                 reportPrinter.addLine(test.getExpression() + "\t\t" + "test faled!");
                 reportPrinter.printReport();
@@ -33,7 +34,7 @@ public class Tester {
                 throw new TestNotPassedException("\t SimpleTest " + test + " not passed!");
             }
         }
-        reportPrinter.addLine("All tests passed!");
+        reportPrinter.addLine("\t\tAll tests passed!\n");
         reportPrinter.printReport();
     }
 
@@ -42,30 +43,46 @@ public class Tester {
         if (testNumber != 1 && testNumber != 8 && testNumber != 9) return;
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher;
+        String tempString = "";
         ReportPrinter reportPrinter = new ReportPrinter();
         boolean isMatches;
         for (ComplexTest test : testList) {
             switch (testNumber) {
                 case 1:
-                    String tempString = "";
                     matcher = pattern.matcher(test.getExpression());
                     if (matcher.matches()) {
                         tempString = matcher.group();
                         tempString = tempString.substring(1, tempString.length() - 1);
                     }
-                    tempString = getStringFirstTask(tempString);
+                    tempString = firstTaskGetString(tempString);
                     isMatches = tempString.equals(test.getCorrectExpression());
                     if (isMatches) {
-                        reportPrinter.addLine(test.getExpression() + "\t\t" + "Test passed successfully");
+                        reportPrinter.addLine(test.getExpression() + "\t\t" + tempString + "\t\t" + "Test passed successfully");
                     } else {
                         reportPrinter.addLine(test.getExpression() + "\t\t" + "Test failed!");
                         reportPrinter.printReport();
-                        throw new TestNotPassedException("\t SimpleTest " + test + " not passed!");
+                        throw new TestNotPassedException("\t ComplexTest " + test + " not passed!");
                     }
                     break;
                 case 8:
-                    if (true) {
-                        throw new TestNotPassedException("\t SimpleTest " + test + " not passed!");
+                    List<String> list = new ArrayList<>();
+                    tempString = eightTaskDeleteGarbage(test.getExpression());
+                    matcher = pattern.matcher(tempString);
+                    while (matcher.find()) {
+                        list.add(matcher.group());
+                    }
+                    tempString = "";
+                    for (String s : list) {
+                        tempString += eightTastDeleteFinalGarbage(s) + ',';
+                    }
+                    tempString = tempString.substring(0, tempString.length() - 1) + ".";
+                    isMatches = tempString.equals(test.getCorrectExpression());
+                    if (isMatches) {
+                        reportPrinter.addLine(test.getExpression() + "\t\t" + tempString + "\t\t" + "Test passed successfully");
+                    } else {
+                        reportPrinter.addLine(test.getExpression() + "\t\t" + "Test failed!\t" + tempString + "/" + test.getCorrectExpression());
+                        reportPrinter.printReport();
+                        throw new TestNotPassedException("\t ComplexTest " + test + " not passed!\t" + tempString + "/" + test.getCorrectExpression());
                     }
                     break;
                 case 9:
@@ -76,17 +93,34 @@ public class Tester {
             }
 
         }
-        reportPrinter.addLine("All tests passed!");
+        reportPrinter.addLine("\t\tAll tests passed!\n");
         reportPrinter.printReport();
     }
 
 
-    private static String getStringFirstTask(String result) {
+    private static String firstTaskGetString(String result) {
         return (!result.isEmpty()) ? "<em>" + result + "<\\em>" : "wrong";
     }
 
-    private static String getStringEighthTask(String result) {
-        return "<em>" + result + "<\\em>";
+    private static String eightTaskDeleteGarbage(String s) {
+        String tempString = "";
+        for (int i = 0; i < s.length(); i++) {
+            char a = s.charAt(i);
+            if (Character.isLetterOrDigit(a) || a == '\"' || a == '\'' || a == ' ' || a == '-') {
+                tempString += a;
+            }
+        }
+        return tempString;
+    }
+
+    private static String eightTastDeleteFinalGarbage(String s) {
+        if (s.contains("\"")) {
+            return s.replaceAll("\"", "");
+        }
+        if (s.contains("--")) {
+            return s.replaceAll("--", "");
+        }
+        return s.replaceAll(" ", "");
     }
 
     private static String getStringNinthTask(String result) {

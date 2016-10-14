@@ -1,26 +1,28 @@
 package iostream;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Semen on 07-Oct-16.
  */
 public class ReportPrinter {
 
-    private String report;
+    private List<String> report = new ArrayList<>();
 
     public ReportPrinter() {
-        report = "\tTEST RESULT\t\n";
+        report.add("\t\t\tTEST RESULT");
     }
 
-
-    public String getReport() {
+    public List<String> getReport() {
         return report;
     }
 
     public void addLine(String line) {
-        report += (line + '\n');
+        report.add(line);
     }
 
     public void printReport() {
-        System.out.println(report);
+        report.forEach(System.out::println);
     }
 }

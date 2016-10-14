@@ -44,7 +44,7 @@ public class MyFileReader {
     }
 
     private static ComplexTest splitComplexTestFromLine(String line) {
-        String[] stringArr = line.split(" ");
+        String[] stringArr = line.split("//");
         return new ComplexTest(stringArr[0], stringArr[1]);
     }
 
