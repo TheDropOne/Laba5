@@ -50,7 +50,7 @@ public class Tester {
                         tempString = matcher.group();
                         tempString = tempString.substring(1, tempString.length() - 1);
                     }
-                    tempString = firstTaskGetString(tempString);
+                    tempString = firstTaskGetString(tempString,test.getExpression());
                     isMatches = tempString.equals(test.getCorrectExpression());
                     if (isMatches) {
                         reportPrinter.addLine(test.getExpression() + "\t\t" + tempString + "\t\t" + "Test passed successfully");
@@ -88,8 +88,8 @@ public class Tester {
     }
 
 
-    private static String firstTaskGetString(String result) {
-        return (!result.isEmpty()) ? "<em>" + result + "<\\em>" : "wrong";
+    private static String firstTaskGetString(String result,String sourceExpression) {
+        return (!result.isEmpty()) ? "<em>" + result + "<\\em>" : sourceExpression;
     }
 
     private static String eightTaskDeleteGarbage(String s) {
