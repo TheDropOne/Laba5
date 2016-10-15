@@ -22,12 +22,12 @@ public class Tester {
         for (SimpleTest test : testList) {
             matcher = pattern.matcher(test.getExpression());
             isMatches = matcher.matches();
-            reportPrinter.addLine(test.getExpression() + "\t\t" + isMatches + "\t\t" + "Test passed successfully");
             if (isMatches != test.isCorrect()) {
-                reportPrinter.addLine(test.getExpression() + "\t\t" + "test faled!");
+                reportPrinter.addLine(test.getExpression() + "\t\t" + "test failed!");
                 reportPrinter.printReport();
                 throw new TestNotPassedException("\t SimpleTest " + test + " not passed!");
             }
+            reportPrinter.addLine(test.getExpression() + "\t\t" + isMatches + "\t\t" + "Test passed successfully");
         }
         reportPrinter.addLine("\t\tAll tests passed!\n");
         reportPrinter.printReport();

@@ -14,11 +14,12 @@ public class Runner {
     private static final String THIRD_REGEX = "[a-fA-F0-9]{8}-([a-fA-F0-9]{4}-){3}[a-fA-F0-9]{12}" +
             "|\\{[a-fA-F0-9]{8}-([a-fA-F0-9]{4}-){3}[a-fA-F0-9]{12}\\}"; // All Tests Passed!
     private static final String FOURTH_REGEX = "((([01]?\\d{2}|2[0-4]\\d|25[0-5])\\.?){3}([01]?\\d{2}|2[0-4]\\d|25[0-5]))" +
-            "|((([01]?\\d{2}|2[0-4]\\d|25[0-6])\\.?){3}([01]?\\d{2}|2[0-4]\\d|25[0-6]))" +
+            "|((([01]?\\d{2}|2[0-4]\\d|25[0-5])\\.?){3}([01]?\\d{2}|2[0-4]\\d|25[0-5]))" +
             "|((0?(\\d{1,3}|x[a-fA-F0-9]{2})\\.){3}0?(\\d{1,3}|x[a-fA-F0-9]{1,2}))"; // All Tests Passed!
     private static final String FIFTH_REGEX = "^((https?://)?(w{3}\\.)?)?([a-zA_Z][a-zA-Z\\+\\-]{0,61}[a-zA_Z]\\.)+([a-z]{2,4})" +
             "(:\\d{2,4}|((/[^\\s\\.]+)+)\\.[a-z]{2,4}((\\?((\\w+=\\S+\\&)+)?(\\w+=\\S+))|#\\w+)?)?"; // All Tests Passed!
-    private static final String SIXTH_REGEX = "(0[1-9]|[12]\\d|3[01])/(0[1-9]|1[0-2])/(1[6-9]\\d{2}|[2-9]\\d{3})"; // All Tests Passed!
+    private static final String SIXTH_REGEX = "((0[1-9]|[12]\\d|3[01])/(0[13578]|1[02])|(0[1-9]|[12]\\d|30)/(0[469]|11)|(0[1-9]|[12][0-8])/02)/(1[6-9]\\d{2}|[2-9]\\d{3})" +
+            "|(29/02/(1[6-9](([2468][048])|(0[48])|(1[26]))|([2468][048]([02468][048])|([13579][26])))"; // All Tests Passed!
     private static final String SEVENTH_REGEX = "#[a-fA-F0-9]{6}"; // All Tests Passed!
     private static final String EIGHTH_REGEX = "(([\\w']+\\s)|(\".+\")|(\\S+(--)|(--)\\S+)|([\\w]+'?[\\w]+-\\w+'?\\w+))"; // All Tests Passed
     private static final String NINTH_REGEX = "(\\:([a-zA_Z][a-zA-Z\\+\\-]{0,61}[a-zA_Z]\\.)+([a-z]{2,4})\\s+)?" + //hostname (optional)
