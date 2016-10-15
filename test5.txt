@@ -1,10 +1,10 @@
-http://www.zcontest.ru true
-http://zcontest.ru true
-http://zcontest.com true
-https://zcontest.ru true
-https://sub.zcontest-ru.com:8080 true
-http://zcontest.ru/dir%201/dir_2/program.ext?var1=x&var2=my%20value true
-zcon.com/index.html#bookmark true
-Just Text. false
-http://a.com false
-http://www.domain-.com false
+http://www.zcontest.ru##true
+http://zcontest.ru##true
+http://zcontest.com##true
+https://zcontest.ru##true
+https://sub.zcontest-ru.com:8080##true
+http://zcontest.ru/dir%201/dir_2/program.ext?var1=x&var2=my%20value##true
+zcon.com/index.html#bookmark##true
+Just Text.##false
+http://a.com##false
+http://www.domain-.com##false

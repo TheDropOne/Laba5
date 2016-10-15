@@ -22,7 +22,7 @@ public class TestLists {
     public static List<SimpleTest> tests_sixth_task;
     public static List<SimpleTest> tests_seventh_task;
     public static List<ComplexTest> tests_eighth_task;
-    public static List<ComplexTest> tests_ninth_task;
+    public static List<SimpleTest> tests_ninth_task;
 
     public static void uploadTests(){
         try {
@@ -32,10 +32,10 @@ public class TestLists {
             tests_fifth_task = readSimpleTestFromFile(new File("test5.txt"));
             tests_sixth_task = readSimpleTestFromFile(new File("test6.txt"));
             tests_seventh_task = readSimpleTestFromFile(new File("test7.txt"));
+            tests_ninth_task = readSimpleTestFromFile(new File("test9.txt"));
 
             tests_first_task = readComplexTestFromFile(new File("test1.txt"));
             tests_eighth_task = readComplexTestFromFile(new File("test8.txt"));
-            tests_ninth_task = readComplexTestFromFile(new File("test9.txt"));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

@@ -26,11 +26,6 @@ public class Tester {
             if (isMatches != test.isCorrect()) {
                 reportPrinter.addLine(test.getExpression() + "\t\t" + "test faled!");
                 reportPrinter.printReport();
-                /*try {
-                    new Thread().wait(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }*/
                 throw new TestNotPassedException("\t SimpleTest " + test + " not passed!");
             }
         }
@@ -40,7 +35,7 @@ public class Tester {
 
 
     public static void makeComplexTest(List<ComplexTest> testList, String regex, int testNumber) throws TestNotPassedException {
-        if (testNumber != 1 && testNumber != 8 && testNumber != 9) return;
+        if (testNumber != 1 && testNumber != 8) return;
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher;
         String tempString = "";
@@ -49,6 +44,7 @@ public class Tester {
         for (ComplexTest test : testList) {
             switch (testNumber) {
                 case 1:
+                    tempString = "";
                     matcher = pattern.matcher(test.getExpression());
                     if (matcher.matches()) {
                         tempString = matcher.group();
@@ -61,7 +57,7 @@ public class Tester {
                     } else {
                         reportPrinter.addLine(test.getExpression() + "\t\t" + "Test failed!");
                         reportPrinter.printReport();
-                        throw new TestNotPassedException("\t ComplexTest " + test + " not passed!");
+                        throw new TestNotPassedException("\t ComplexTest " + test + " not passed!\t" + tempString + "/" + test.getCorrectExpression());
                     }
                     break;
                 case 8:
@@ -85,13 +81,7 @@ public class Tester {
                         throw new TestNotPassedException("\t ComplexTest " + test + " not passed!\t" + tempString + "/" + test.getCorrectExpression());
                     }
                     break;
-                case 9:
-                    if (true) {
-                        throw new TestNotPassedException("\t SimpleTest " + test + " not passed!");
-                    }
-                    break;
             }
-
         }
         reportPrinter.addLine("\t\tAll tests passed!\n");
         reportPrinter.printReport();
@@ -122,9 +112,4 @@ public class Tester {
         }
         return s.replaceAll(" ", "");
     }
-
-    private static String getStringNinthTask(String result) {
-        return result;
-    }
-
 }

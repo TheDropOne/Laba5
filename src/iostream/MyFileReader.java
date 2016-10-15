@@ -39,7 +39,7 @@ public class MyFileReader {
     }
 
     private static SimpleTest splitSimpleTestFromLine(String line) {
-        String[] stringArr = line.split(" ");
+        String[] stringArr = line.split("##");
         return new SimpleTest(stringArr[0], Boolean.parseBoolean(stringArr[1]));
     }
 
