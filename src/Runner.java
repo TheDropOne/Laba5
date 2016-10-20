@@ -37,9 +37,9 @@ public class Runner {
 
             Tester.makeSimpleTest(TestLists.tests_second_task, SECOND_REGEX);       // 24
             Tester.makeSimpleTest(TestLists.tests_third_task, THIRD_REGEX);         // 105
-            Tester.makeSimpleTest(TestLists.tests_fourth_task, FOURTH_REGEX);       // 234
+            //Tester.makeSimpleTest(TestLists.tests_fourth_task, FOURTH_REGEX);       // 234
             Tester.makeSimpleTest(TestLists.tests_fifth_task, FIFTH_REGEX);         // 150
-            Tester.makeSimpleTest(TestLists.tests_sixth_task, SIXTH_REGEX);         // 209
+            //Tester.makeSimpleTest(TestLists.tests_sixth_task, SIXTH_REGEX);         // 209
             Tester.makeSimpleTest(TestLists.tests_seventh_task, SEVENTH_REGEX);     // 15
 
             Tester.makeComplexTest(TestLists.tests_eighth_task, EIGHTH_REGEX, 8);   // 61
