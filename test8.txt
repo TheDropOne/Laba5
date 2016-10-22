@@ -1,3 +1,4 @@
                     I can't do it //I,can't,do,it.
             Too long; didn't read //Too,long,didn't,read.
 Suzie Smith-Hopper test--hyphens //Suzie,Smith-Hopper,test,hyphens.
+Suzie "Smith-Hopper test--hyphens" //Suzie,Smith-Hopper test--hyphens.
